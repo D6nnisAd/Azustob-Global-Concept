@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azustob Global Concept</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local Styles -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <header class="glass-header" id="mainHeader">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Azustob.</span>
+            </a>
+            
+            <button class="hamburger" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#shop">Shop</a>
+                <a href="#contact">Contact</a>
+                <a href="#start" class="btn-gold">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero split-hero fade-section">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <h1>Empowering Growth through Digital &amp; Physical Excellence.</h1>
+                    <p>Azustob Global Concept delivers a multi-dimensional approach to scalable corporate success, merging high-end aesthetics with trusted business solutions.</p>
+                    <div class="cta-group">
+                        <a href="#services" class="btn-gold large">Explore Verticals <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn-outline">Contact Us</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="./assets/hero_split_dark.png" alt="African Corporate Business Meeting" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services fade-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Verticals</h2>
+                    <p>Experience premium services designed for forward-thinking enterprises.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3>Digital Marketing</h3>
+                        <p>Elevate your brand with data-driven SEO, dynamic Social Media strategies, and premium Branding.</p>
+
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
+                        <h3>Unisex Salon</h3>
+                        <p>Focus on Premium Grooming &amp; Beauty Services with an unmatched luxurious experience.</p>
+
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="card-icon"><i class="fa-solid fa-credit-card"></i></div>
+                        <h3>POS Services</h3>
+                        <p>Next-generation Secure Payment Solutions &amp; Agency Banking for seamless transactions.</p>
+
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="card-icon"><i class="fa-solid fa-store"></i></div>
+                        <h3>Digital Marketplace</h3>
+                        <p>Curated Expert-led PDF Guides &amp; high-value Digital Products for immediate growth.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="shop" class="shop-section fade-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Digital Product Gallery</h2>
+                    <p>Instant access to expert business strategies.</p>
+                </div>
+
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="marketing">Marketing</button>
+                    <button class="filter-btn" data-filter="business">Business</button>
+                    <button class="filter-btn" data-filter="salon">Salon</button>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-category="marketing">
+                        <div class="product-cover">
+                            <img src="./assets/ebook_marketing.png" alt="Marketing 101 Guide">
+                        </div>
+                        <div class="product-info">
+                            <h3>Marketing 101 Guide</h3>
+                            <div class="price">₦5,000</div>
+                            <button class="btn-gold buy-now-btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card" data-category="salon">
+                        <div class="product-cover">
+                            <img src="./assets/ebook_salon.png" alt="Salon Business Blueprint">
+                        </div>
+                        <div class="product-info">
+                            <h3>Salon Business Blueprint</h3>
+                            <div class="price">₦5,000</div>
+                            <button class="btn-gold buy-now-btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card" data-category="business">
+                        <div class="product-cover">
+                            <img src="./assets/ebook_banking.png" alt="Agency Banking Guide">
+                        </div>
+                        <div class="product-info">
+                            <h3>Agency Banking Guide</h3>
+                            <div class="price">₦5,000</div>
+                            <button class="btn-gold buy-now-btn">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card" data-category="business">
+                        <div class="product-cover">
+                            <img src="./assets/ebook_growth.png" alt="Digital Growth Strategy">
+                        </div>
+                        <div class="product-info">
+                            <h3>Digital Growth Strategy</h3>
+                            <div class="price">₦5,000</div>
+                            <button class="btn-gold buy-now-btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="compliance-note">Digital products are delivered instantly via email upon successful payment. See our Refund Policy for details.</p>
+            </div>
+        </section>
+
+        <!-- Checkout Modal -->
+        <div class="modal-overlay" id="checkoutModal">
+            <div class="modal-content">
+                <button class="close-modal" id="closeModal">&times;</button>
+                <h3>Secure Checkout Placeholder</h3>
+                <p>This is a placeholder for your secure payment gateway (e.g., Paystack/Flutterwave). Integrating this will require server-side functionality to handle real transactions safely.</p>
+                <div class="modal-actions">
+                    <button class="btn-outline" id="cancelBtn">Cancel</button>
+                    <button class="btn-gold disabled" disabled>Proceed to Pay</button>
+                </div>
+            </div>
+        </div>
+        <!-- Contact & Support Section -->
+        <section id="contact" class="contact-section fade-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Contact &amp; Support</h2>
+                    <p>Let's discuss how we can elevate your corporate growth.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h3>Business Information</h3>
+                        <p>We operate globally to ensure your solutions are delivered properly.</p>
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> Lagos, Nigeria</li>
+                            <li><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +234 814 431 5658</li>
+                            <li><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> giftalhubtech@gmail.com</li>
+                            <li><i class="fa-solid fa-clock"></i> <strong>Hours:</strong> Mon-Sat: 8:00 AM - 8:00 PM</li>
+                        </ul>
+                        
+                        <div class="map-container">
+                            <img src="./assets/map_placeholder.png" alt="Map Location Placeholder" class="map-image">
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <h3>Send a Message</h3>
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                                <span class="error-msg">Please enter your full name.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="john@company.com">
+                                <span class="error-msg">Please enter a valid email address.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service">Service Interest *</label>
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Select a Service</option>
+                                    <option value="marketing">Digital Marketing &amp; SEO</option>
+                                    <option value="salon">Unisex Salon</option>
+                                    <option value="pos">POS &amp; Agency Banking</option>
+                                    <option value="shop">Digital PDF Products</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                                <span class="error-msg">Please select a service interest.</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                                <span class="error-msg">Please provide a message.</span>
+                            </div>
+                            
+                            <button type="submit" class="btn-gold large full-width">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-corporate">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo">streamafricaapp.com.ng</h2>
+                <p class="tagline">Delivering global excellence and trusted business solutions worldwide.</p>
+            </div>
+            
+            <div class="footer-col contact-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> giftalhubtech@gmail.com</li>
+                    <li><i class="fa-solid fa-phone"></i> +234 814 431 5658</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Lagos, Nigeria</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container bottom-flex">
+                <p>&copy; 2026 Azustob Global Concept. All Rights Reserved.</p>
+                <div class="legal-links">
+                    <a href="./privacy.html" class="legal-link">Privacy Policy</a>
+                    <a href="./terms.html" class="legal-link">Terms of Service</a>
+                    <a href="./refund.html" class="legal-link">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+2348144315658?text=Hello%20Azustob%20Global,%20I%20am%20interested%20in%20your%20services." target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Local Script -->
+    <script src="./js/script.js"></script>
+</body>
+</html>
