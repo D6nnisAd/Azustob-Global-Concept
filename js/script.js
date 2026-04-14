@@ -153,20 +153,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const buyBtns = document.querySelectorAll('.buy-now-btn');
     const closeBtn = document.getElementById('closeModal');
     const cancelBtn = document.getElementById('cancelBtn');
+    const checkoutForm = document.getElementById('checkoutForm');
+    const checkoutModalProduct = document.getElementById('checkoutModalProduct');
+    const proceedPayBtn = document.getElementById('proceedPayBtn');
+
+    let currentProduct = null;
+    let currentAmount = 0;
 
     buyBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            const productCard = btn.closest('.product-card');
+            const title = productCard.querySelector('h3').innerText;
+            const priceText = productCard.querySelector('.price').innerText;
+            
+            currentAmount = parseInt(priceText.replace(/[^0-9]/g, ''), 10);
+            currentProduct = title;
+
+            if (checkoutModalProduct) {
+                checkoutModalProduct.innerText = `Product: ${title} - ₦${currentAmount}`;
+            }
             modal.classList.add('active');
         });
     });
 
     const closeModal = () => {
         modal.classList.remove('active');
+        if(checkoutForm) checkoutForm.reset();
     };
 
     closeBtn.addEventListener('click', closeModal);
-    cancelBtn.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
 
     // Close on outside click
     modal.addEventListener('click', (e) => {
@@ -174,5 +191,56 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('checkoutName').value.trim();
+            const email = document.getElementById('checkoutEmail').value.trim();
+
+            if (!name || !email) return;
+
+            // Trigger Korapay
+            const proceedBtnText = proceedPayBtn.innerHTML;
+            proceedPayBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+            proceedPayBtn.disabled = true;
+
+            if (window.Korapay) {
+                window.Korapay.initialize({
+                    key: "pk_live_Yx9DGcvjpKxXMANiwp1kwnBfKq1ZPYz2h63fTwHs",
+                    reference: `azustob_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+                    amount: currentAmount,
+                    currency: "NGN",
+                    customer: {
+                        name: name,
+                        email: email
+                    },
+                    narration: currentProduct,
+                    onSuccess: function(response) {
+                        console.log('Payment successful', response);
+                        
+                        // Close modal
+                        closeModal();
+
+                        // Redirect to WhatsApp
+                        const waMessage = `Hello Azustob Global, I have just made a payment of ₦${currentAmount} for "${currentProduct}". My transaction reference is ${response.reference || 'Korapay'}. Please confirm and deliver my product.`;
+                        window.location.href = `https://wa.me/+2348144315658?text=${encodeURIComponent(waMessage)}`;
+                        
+                        proceedPayBtn.innerHTML = proceedBtnText;
+                        proceedPayBtn.disabled = false;
+                    },
+                    onClose: function() {
+                        console.log('Payment modal closed');
+                        proceedPayBtn.innerHTML = proceedBtnText;
+                        proceedPayBtn.disabled = false;
+                    }
+                });
+            } else {
+                alert("Payment gateway failed to load. Please try again.");
+                proceedPayBtn.innerHTML = proceedBtnText;
+                proceedPayBtn.disabled = false;
+            }
+        });
+    }
 
 });

@@ -553,6 +553,7 @@ a {
 .form-group {
     margin-bottom: 1.5rem;
     position: relative;
+    text-align: left;
 }
 
 .form-group label {
@@ -564,7 +565,8 @@ a {
 
 .contact-form input, 
 .contact-form select, 
-.contact-form textarea {
+.contact-form textarea,
+#checkoutForm input {
     width: 100%;
     padding: 1rem;
     background-color: var(--color-navy-light);
@@ -578,7 +580,8 @@ a {
 
 .contact-form input:focus, 
 .contact-form select:focus, 
-.contact-form textarea:focus {
+.contact-form textarea:focus,
+#checkoutForm input:focus {
     outline: none;
     border-color: var(--color-gold);
     box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);

@@ -169,12 +169,22 @@
         <div class="modal-overlay" id="checkoutModal">
             <div class="modal-content">
                 <button class="close-modal" id="closeModal">&times;</button>
-                <h3>Secure Checkout Placeholder</h3>
-                <p>This is a placeholder for your secure payment gateway (e.g., Paystack/Flutterwave). Integrating this will require server-side functionality to handle real transactions safely.</p>
-                <div class="modal-actions">
-                    <button class="btn-outline" id="cancelBtn">Cancel</button>
-                    <button class="btn-gold disabled" disabled>Proceed to Pay</button>
-                </div>
+                <h3>Complete Your Order</h3>
+                <p id="checkoutModalProduct" style="margin-bottom:15px; font-weight:600;"></p>
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="checkoutName">Full Name *</label>
+                        <input type="text" id="checkoutName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkoutEmail">Email Address *</label>
+                        <input type="email" id="checkoutEmail" required placeholder="john@company.com">
+                    </div>
+                    <div class="modal-actions" style="margin-top: 20px;">
+                        <button type="button" class="btn-outline" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-gold" id="proceedPayBtn">Proceed to Pay</button>
+                    </div>
+                </form>
             </div>
         </div>
         <!-- Contact & Support Section -->
@@ -277,6 +287,8 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Korapay Script -->
+    <script src="https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js"></script>
     <!-- Local Script -->
     <script src="./js/script.js"></script>
 </body>
