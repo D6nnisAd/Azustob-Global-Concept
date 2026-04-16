@@ -200,30 +200,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!name || !email) return;
 
-            // Trigger Korapay
+            // Trigger Paystack
             const proceedBtnText = proceedPayBtn.innerHTML;
             proceedPayBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
             proceedPayBtn.disabled = true;
 
-            if (window.Korapay) {
-                window.Korapay.initialize({
-                    key: "pk_live_Yx9DGcvjpKxXMANiwp1kwnBfKq1ZPYz2h63fTwHs",
-                    reference: `azustob_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
-                    amount: currentAmount,
+            if (window.PaystackPop) {
+                let handler = window.PaystackPop.setup({
+                    key: "pk_live_96e0c2a82c83cd09dc9dad7895c3ee918f0c542a",
+                    email: email,
+                    amount: currentAmount * 100, // Paystack requires amount in kobo
                     currency: "NGN",
-                    customer: {
-                        name: name,
-                        email: email
+                    ref: `azustob_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+                    metadata: {
+                        custom_fields: [
+                            {
+                                display_name: "Customer Name",
+                                variable_name: "customer_name",
+                                value: name
+                            },
+                            {
+                                display_name: "Product",
+                                variable_name: "product",
+                                value: currentProduct
+                            }
+                        ]
                     },
-                    narration: currentProduct,
-                    onSuccess: function(response) {
+                    callback: function(response) {
                         console.log('Payment successful', response);
                         
                         // Close modal
                         closeModal();
 
                         // Redirect to WhatsApp
-                        const waMessage = `Hello Azustob Global, I have just made a payment of ₦${currentAmount} for "${currentProduct}". My transaction reference is ${response.reference || 'Korapay'}. Please confirm and deliver my product.`;
+                        const waMessage = `Hello Azustob Global, I have just made a payment of ₦${currentAmount} for "${currentProduct}". My transaction reference is ${response.reference || 'Paystack'}. Please confirm and deliver my product.`;
                         window.location.href = `https://wa.me/+2348144315658?text=${encodeURIComponent(waMessage)}`;
                         
                         proceedPayBtn.innerHTML = proceedBtnText;
@@ -235,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         proceedPayBtn.disabled = false;
                     }
                 });
+                handler.openIframe();
             } else {
                 alert("Payment gateway failed to load. Please try again.");
                 proceedPayBtn.innerHTML = proceedBtnText;
